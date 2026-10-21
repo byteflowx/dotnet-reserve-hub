@@ -1,0 +1,12 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/ReserveHub.Api/ReserveHub.Api.csproj" />
+    <Project Path="src/ReserveHub.Application/ReserveHub.Application.csproj" />
+    <Project Path="src/ReserveHub.Domain/ReserveHub.Domain.csproj" />
+    <Project Path="src/ReserveHub.Infrastructure/ReserveHub.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/ReserveHub.IntegrationTests/ReserveHub.IntegrationTests.csproj" />
+    <Project Path="tests/ReserveHub.UnitTests/ReserveHub.UnitTests.csproj" />
+  </Folder>
+</Solution>

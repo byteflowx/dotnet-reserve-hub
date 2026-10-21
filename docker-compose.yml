@@ -1,0 +1,30 @@
+services:
+  db:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_DB: reservehub
+      POSTGRES_USER: reservehub
+      POSTGRES_PASSWORD: reservehub
+    ports:
+      - "5432:5432"
+    volumes:
+      - reservehub-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U reservehub -d reservehub"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  api:
+    build: .
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      ConnectionStrings__ReserveHub: "Host=db;Database=reservehub;Username=reservehub;Password=reservehub"
+      Database__MigrateOnStartup: "true"
+    ports:
+      - "8080:8080"
+
+volumes:
+  reservehub-data:
